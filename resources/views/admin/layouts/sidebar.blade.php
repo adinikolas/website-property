@@ -90,32 +90,32 @@
 
     <ul class="sidebar-menu">
         <li>
-            <a href="{{ url('/admin/dashboard') }}" class="active">
+            <a href="{{ url('/admin/dashboard') }}" class="{{ request()->segment(2) == 'dashboard' ? 'active' : '' }}">
                 <i class="fa-solid fa-border-all"></i> Dashboard
             </a>
         </li>
         <li>
-            <a href="{{ url('/admin/property') }}">
+            <a href="{{ url('/admin/property') }}" class="{{ request()->segment(2) == 'property' ? 'active' : '' }}">
                 <i class="fa-solid fa-house"></i> Property
             </a>
         </li>
         <li>
-            <a href="{{ url('/admin/property_type') }}">
+            <a href="{{ url('/admin/property_type') }}" class="{{ request()->segment(2) == 'property_type' ? 'active' : '' }}">
                 <i class="fa-solid fa-list"></i> Type Rumah
             </a>
         </li>
         <li>
-            <a href="{{ url('/admin/property_type_image') }}">
+            <a href="{{ url('/admin/property_type_image') }}" class="{{ request()->segment(2) == 'property_type_image' ? 'active' : '' }}">
                 <i class="fa-regular fa-image"></i> Gambar Property
             </a>
         </li>
         <li>
-            <a href="{{ url('/admin/testimonial') }}">
+            <a href="{{ url('/admin/testimonial') }}" class="{{ request()->segment(2) == 'testimonial' ? 'active' : '' }}">
                 <i class="fa-regular fa-thumbs-up"></i> Testimoni
             </a>
         </li>
         <li>
-            <a href="{{ url('/admin/settings') }}">
+            <a href="{{ url('/admin/settings') }}" class="{{ request()->segment(2) == 'settings' ? 'active' : '' }}">
                 <i class="fa-solid fa-gear"></i> Settings
             </a>
         </li>
