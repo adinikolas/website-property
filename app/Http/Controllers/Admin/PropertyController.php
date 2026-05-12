@@ -25,24 +25,23 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
+        // 1. Validasi pastikan image "nullable"
         $request->validate([
-            'name_property' => 'required|string|max:255',
+            'name_property' => 'required',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Diubah jadi nullable
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240' // WAJIB ADA NULLABLE
         ]);
 
-        $path = null;
+        $data = $request->except(['_token']);
+
+        // 2. Jika ada file gambar, simpan
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('properties', 'public');
+            $data['image'] = $request->file('image')->store('properties', 'public');
         }
 
-        Property::create([
-            'name_property' => $request->name_property,
-            'description' => $request->description,
-            'image' => $path,
-        ]);
+        Property::create($data);
 
-        return redirect()->route('property.index')->with('success', 'Property berhasil ditambahkan');
+        return redirect()->route('property.index')->with('success', 'Data Property berhasil ditambahkan!');
     }
 
     public function show($id)
@@ -57,39 +56,50 @@ class PropertyController extends Controller
         return view('admin.property.edit', compact('property'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $property = Property::findOrFail($id);
-
+        // 1. Validasi pastikan image "nullable"
         $request->validate([
             'name_property' => 'required',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240' // WAJIB ADA NULLABLE
         ]);
 
-        $data = [
-            'name_property' => $request->name_property,
-            'description' => $request->description,
-        ];
+        $property = Property::findOrFail($id);
+        $data = $request->except(['_token', '_method', 'remove_image']);
 
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama
-            Storage::disk('public')->delete($property->image);
-            // Upload baru
+        // 2. Cek jika user klik tombol Hapus Gambar (dari field hidden remove_image)
+        if ($request->input('remove_image') == "1") {
+            if ($property->image) {
+                Storage::disk('public')->delete($property->image);
+            }
+            $data['image'] = null;
+        }
+        // 3. Cek jika user upload gambar baru
+        elseif ($request->hasFile('image')) {
+            if ($property->image) {
+                Storage::disk('public')->delete($property->image);
+            }
             $data['image'] = $request->file('image')->store('properties', 'public');
         }
 
         $property->update($data);
 
-        return redirect()->route('property.index')->with('success', 'Property berhasil diupdate');
+        return redirect()->route('property.index')->with('success', 'Data Property berhasil diperbarui!');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $property = Property::findOrFail($id);
-        Storage::disk('public')->delete($property->image);
+
+        // 1. Cek apakah property memiliki gambar, jika ADA baru dihapus filenya
+        if ($property->image) {
+            Storage::disk('public')->delete($property->image);
+        }
+
+        // 2. Hapus data dari database
         $property->delete();
 
-        return redirect()->route('property.index')->with('success', 'Property berhasil dihapus');
+        return redirect()->route('property.index')->with('success', 'Data Property berhasil dihapus!');
     }
 }

@@ -23,6 +23,7 @@ class PropertyType extends Model
 
     protected $casts = [
         'is_featured' => 'boolean',
+        'dp' => 'array', // Mengubah string JSON menjadi array otomatis
     ];
 
     // Relasi ke property
