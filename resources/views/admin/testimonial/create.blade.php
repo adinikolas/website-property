@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Tambah Testimoni')
+
 @section('content')
 <style>
     .page-container { padding: 30px; background-color: #ffffff; min-height: 100vh; }

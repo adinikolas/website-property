@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Property')
+
 @section('content')
 <style>
     .page-container {
