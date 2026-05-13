@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyTypeController;
+use App\Http\Controllers\Admin\PropertyTypeImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,8 @@ Route::prefix('admin')->group(function () {
 
     // CRUD Data Type Rumah
     Route::resource('property_type', PropertyTypeController::class);
+
+    // CRUD Data Gambar Type Rumah
+    Route::resource('property_type_image', PropertyTypeImageController::class);
 
 });
