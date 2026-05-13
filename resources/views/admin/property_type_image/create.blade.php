@@ -11,78 +11,39 @@
     .btn-back { padding: 12px 20px; border-radius: 8px; font-weight: 700; text-decoration: none; color: #fff; background-color: #6c757d; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
     .btn-back:hover { background-color: #5a6268; }
 
-    /* Card Form (Warna abu-abu #ebebeb) */
-    .form-card { background: #ebebeb; border-radius: 12px; padding: 40px; width: 100%; margin-bottom: 30px; }
+    /* Card Form (Padding disamakan menjadi 35px) */
+    .form-card { background: #ebebeb; border-radius: 12px; padding: 35px; width: 100%; margin-bottom: 30px; }
 
-    /* Form Elements */
+    /* Form Elements (Warna label #555 & form-control fokus hijau) */
     .form-group { margin-bottom: 25px; }
-    .form-label { display: block; font-size: 12px; font-weight: 800; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .form-control { width: 100%; padding: 14px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; background: #fff; outline: none; color: #333; }
+    .form-label { display: block; font-size: 12px; font-weight: 800; color: #555; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-control { width: 100%; padding: 14px 15px; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; background: #fff; outline: none; transition: 0.2s; font-family: inherit; color: #333; }
+    .form-control:focus { border-color: #31743a; }
 
-    .btn-add-img { width: 100%; background: #31743a; color: #fff; padding: 14px; border-radius: 8px; border: none; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 25px; transition: 0.2s; }
+    .btn-add-img { width: 100%; background: #31743a; color: #fff; padding: 14px; border-radius: 8px; border: none; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 25px; transition: 0.2s; font-family: inherit; }
     .btn-add-img:hover { background: #24582a; }
 
-    /* Grid Gambar (Desktop 2 Kolom, Serupa dengan Edit/Detail) */
-    .images-manage-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-    }
+    /* Grid Gambar (Desktop 2 Kolom) */
+    .images-manage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
 
     /* Block Gambar (Vertikal Layout) */
-    .image-block {
-        background: #fff;
-        border-radius: 10px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-        border: 1px solid #ddd;
-    }
+    .image-block { background: #fff; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: stretch; gap: 15px; border: 1px solid #ddd; }
 
     /* Ukuran disamakan dengan Halaman Detail & Edit (16:9) */
-    .preview-box {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        height: auto;
-        background: #d6d6d6;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border: 1px solid #ccc;
-    }
+    .preview-box { width: 100%; aspect-ratio: 16 / 9; height: auto; background: #d6d6d6; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #ccc; }
     .preview-box img { width: 100%; height: 100%; object-fit: contain; }
 
-    .block-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 10px;
-    }
+    .block-info { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 10px; }
 
-    .btn-remove-img {
-        width: 100%;
-        background: #e74c3c; color: #fff; border: none;
-        padding: 12px 15px; border-radius: 8px; font-size: 13px; font-weight: 700;
-        cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s;
-    }
+    .btn-remove-img { width: 100%; background: #e74c3c; color: #fff; border: none; padding: 12px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s; font-family: inherit; }
     .btn-remove-img:hover { background: #c0392b; }
 
     /* Teks Caption Gambar */
-    .img-caption-edit {
-        font-size: 14px;
-        font-weight: 800;
-        margin-top: 5px;
-        text-align: center;
-    }
+    .img-caption-edit { font-size: 14px; font-weight: 800; color: #555; margin-top: 5px; text-align: center; }
 
-    /* Area Submit Bawah */
-    .submit-wrapper { display: flex; justify-content: flex-end; margin-top: 40px; padding-top: 25px; border-top: 1px solid #ccc; }
-    .btn-submit { background-color: #0d6efd; color: #fff; padding: 14px 28px; border-radius: 8px; border: none; font-weight: 700; font-size: 15px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    /* Area Submit Bawah (Margin & Border disesuaikan) */
+    .submit-wrapper { display: flex; justify-content: flex-end; margin-top: 30px; padding-top: 25px; border-top: 1px solid #dcdcdc; }
+    .btn-submit { background-color: #0d6efd; color: #fff; padding: 14px 28px; border-radius: 8px; border: none; font-weight: 700; font-size: 15px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; }
     .btn-submit:hover { background-color: #0b5ed7; }
 
     .alert-error { background: #f8d7da; color: #721c24; padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; font-weight: 600; border: 1px solid #f5c6cb; }
@@ -90,7 +51,7 @@
     /* Mobile Responsive */
     @media(max-width: 768px) {
         .page-container { padding: 15px; }
-        .form-card { padding: 25px; }
+        .form-card { padding: 20px; } /* Disamakan dengan Edit Property */
 
         .header-flex { flex-direction: column; align-items: stretch; text-align: center; gap: 15px; }
         .page-title { text-align: center; width: 100%; }
@@ -99,7 +60,7 @@
         /* Ubah jadi 1 kolom di Mobile */
         .images-manage-grid { grid-template-columns: 1fr; }
 
-        .submit-wrapper { flex-direction: column; }
+        .submit-wrapper { justify-content: center; }
         .btn-submit { width: 100%; justify-content: center; }
     }
 </style>
@@ -108,7 +69,7 @@
     <div class="header-flex">
         <h1 class="page-title">Tambah Gambar Property</h1>
         <a href="{{ route('property_type_image.index') }}" class="btn-back">
-            <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar
+            <i class="fa-solid fa-arrow-left"></i> Batal
         </a>
     </div>
 

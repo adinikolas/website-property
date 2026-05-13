@@ -122,7 +122,7 @@
                     <form action="{{ route('property.destroy', $property->id) }}" method="POST" style="margin: 0; display:flex;">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn-act bg-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus Property ini?')">
-                            <i class="fa-solid fa-trash-can"></i> Hapus
+                            <i class="fa-solid fa-trash-can"></i> Hapus Data
                         </button>
                     </form>
                 </div>

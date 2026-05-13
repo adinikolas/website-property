@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyTypeController;
 use App\Http\Controllers\Admin\PropertyTypeImageController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,8 @@ Route::prefix('admin')->group(function () {
 
     // CRUD Data Gambar Type Rumah
     Route::resource('property_type_image', PropertyTypeImageController::class);
+
+    // CRUD Data Testimonial
+    Route::resource('testimonial', TestimonialController::class);
 
 });
