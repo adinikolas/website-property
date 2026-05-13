@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyTypeController;
 use App\Http\Controllers\Admin\PropertyTypeImageController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,9 @@ Route::prefix('admin')->group(function () {
 
     // CRUD Data Testimonial
     Route::resource('testimonial', TestimonialController::class);
+
+    // Data Setting
+    Route::get('/settings', [SettingController::class, 'index'])->name('setting.index');
+    Route::post('/settings', [SettingController::class, 'store'])->name('setting.store');
 
 });
