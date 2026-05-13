@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Detail Property')
+@section('title', 'Edit Property')
 
 @section('content')
 <style>
@@ -21,7 +21,6 @@
     }
     input:focus, textarea:focus { border-color: #31743a; }
 
-    /* Diubah menjadi flex-start agar tombol sejajar dengan sisi atas gambar */
     .gambar-section { display: flex; gap: 25px; align-items: flex-start; margin-top: 10px; }
 
     .gambar-box {
@@ -43,8 +42,10 @@
     .btn-remove-img { background-color: #e50000; }
     .btn-remove-img:hover { background-color: #b30000; }
 
-    /* Tombol Simpan Rata Kanan (Warna Biru) */
-    .submit-wrapper { display: flex; justify-content: flex-end; margin-top: 30px; }
+    /* Garis Pemisah */
+    .form-divider { border: 0; height: 1px; background: #dcdcdc; margin: 30px 0 20px 0; }
+
+    .submit-wrapper { display: flex; justify-content: flex-end; margin-top: 10px; }
     .btn-submit { background-color: #0d6efd; color: #fff; padding: 14px 28px; border-radius: 8px; border: none; font-weight: 700; font-size: 15px; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px;}
     .btn-submit:hover { background-color: #0b5ed7; }
 
@@ -115,6 +116,8 @@
                     </div>
                 </div>
             </div>
+
+            <hr class="form-divider">
 
             <div class="submit-wrapper">
                 <button type="submit" class="btn-submit">
