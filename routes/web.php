@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\PropertyTypeController;
 use App\Http\Controllers\Admin\PropertyTypeImageController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PropertyController as FrontendPropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,17 @@ use App\Http\Controllers\Admin\SettingController;
 |--------------------------------------------------------------------------
 */
 
+// Halaman Utama (Homepage)
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Route untuk Halaman Detail Property
+Route::get('/property/{id}', [FrontendPropertyController::class, 'show'])->name('frontend.property.show');
+
 // Route logout sementara
 Route::post('/logout', function () {
     // Auth::logout();
     return redirect('/');
 })->name('logout');
-
 
 // Grup Route khusus halaman Admin
 Route::prefix('admin')->group(function () {
