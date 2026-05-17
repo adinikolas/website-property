@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyTypeController;
@@ -23,31 +24,43 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/property/{id}', [FrontendPropertyController::class, 'show'])->name('frontend.property.show');
 
 // Route logout sementara
-Route::post('/logout', function () {
-    // Auth::logout();
-    return redirect('/');
-})->name('logout');
+// Route::post('/logout', function () {
+//     // Auth::logout();
+//     return redirect('/');
+// })->name('logout');
 
 // Grup Route khusus halaman Admin
 Route::prefix('admin')->group(function () {
 
-    // Halaman Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    // Route untuk Tamu (Belum Login)
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+    });
 
-    // CRUD Data Property
-    Route::resource('property', PropertyController::class);
+    // Jika mengakses /admin otomatis diarahkan ke /admin/dashboard
+    Route::get('/', function () {
+        return redirect('/admin/dashboard');
+    });
 
-    // CRUD Data Type Rumah
-    Route::resource('property_type', PropertyTypeController::class);
+    // Route yang DILINDUNGI (Hanya bisa diakses jika sudah Login)
+    Route::middleware('auth')->group(function () {
 
-    // CRUD Data Gambar Type Rumah
-    Route::resource('property_type_image', PropertyTypeImageController::class);
+        // Halaman Dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // CRUD Data Testimonial
-    Route::resource('testimonial', TestimonialController::class);
+        // Route logout (Dipindah ke dalam auth agar hanya bisa diakses kalau sudah login)
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Data Setting
-    Route::get('/settings', [SettingController::class, 'index'])->name('setting.index');
-    Route::post('/settings', [SettingController::class, 'store'])->name('setting.store');
+        // CRUD Data
+        Route::resource('property', PropertyController::class);
+        Route::resource('property_type', PropertyTypeController::class);
+        Route::resource('property_type_image', PropertyTypeImageController::class);
+        Route::resource('testimonial', TestimonialController::class);
+
+        // Data Setting
+        Route::get('/settings', [SettingController::class, 'index'])->name('setting.index');
+        Route::post('/settings', [SettingController::class, 'store'])->name('setting.store');
+    });
 
 });

@@ -122,8 +122,12 @@
     </ul>
 
     <div class="sidebar-footer">
-        <a href="{{ url('/') }}" class="btn-logout" style="cursor: pointer; width: 100%;">
+        <a href="#" class="btn-logout" style="cursor: pointer; width: 100%;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Logout
         </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
 </div>

@@ -8,7 +8,7 @@
     <!-- Title Dinamis (Diambil dari @section('title') di masing-masing halaman) -->
     <title>@yield('title', 'Beranda') - CKM City Karawang</title>
 
-    <!-- FontAwesome CDN untuk Ikon (Penting agar ikon WA, Rumah, dll muncul) -->
+    <!-- FontAwesome CDN untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -22,7 +22,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
-        /* Membuat efek scroll halus saat mengklik link seperti "Lihat Perumahan" */
+        /* Efek scroll halus */
         html {
             scroll-behavior: smooth;
         }
@@ -30,7 +30,6 @@
 </head>
 <body>
 
-    <!-- Di sinilah konten dari index.blade.php akan disisipkan -->
     @yield('content')
 
 </body>

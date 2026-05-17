@@ -26,7 +26,7 @@
     .price-main { font-size: 32px; font-weight: 900; margin: 0; text-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 
     /* 2. Info Boxes (3 Kolom) */
-    .info-section { padding: 40px 0 0 0; background: #fff; }
+    .info-section { padding: 60px 0 10px 0; background: transparent; }
     .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .info-box { background: #e5e7eb; padding: 25px 15px; text-align: center; border-radius: 10px; font-weight: 900; font-size: 18px; color: #111827; border: 1px solid #d1d5db; }
 
