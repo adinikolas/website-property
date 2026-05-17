@@ -61,8 +61,25 @@
 
     /* 2. Promo Section */
     .promo-section { background: #ffffff; }
-    .promo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-    .promo-box { background: #f3f4f6; padding: 30px; text-align: center; border-radius: 12px; font-weight: 800; font-size: 18px; color: #111827; border: 1px solid #e5e7eb; }
+    .promo-grid {
+        display: flex;
+        justify-content: center; /* Kunci agar otomatis ke tengah */
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+    .promo-box {
+        /* Kalkulasi: 100% lebar dibagi 3 kolom, dikurangi jarak gap 25px */
+        flex: 0 0 calc((100% - 50px) / 3);
+        box-sizing: border-box;
+        background: #f3f4f6;
+        padding: 30px;
+        text-align: center;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 18px;
+        color: #111827;
+        border: 1px solid #e5e7eb;
+    }
 
     /* 3. Tentang Section (Dark Slate) */
     .about-section { background: #111827; color: #fff; text-align: center; }
@@ -127,7 +144,8 @@
     @media(max-width: 768px) {
         section { padding: 60px 0; }
         .hero-section { padding: 100px 0 80px 0; }
-        .promo-grid, .keunggulan-grid, .perumahan-grid, .keuntungan-grid, .testimoni-grid { grid-template-columns: 1fr; }
+        .keunggulan-grid, .perumahan-grid, .keuntungan-grid, .testimoni-grid { grid-template-columns: 1fr; }
+        .promo-box { flex: 0 0 100%; }
         .hero-title { font-size: 40px; }
         .hero-buttons { flex-direction: column; }
         .section-title { font-size: 26px; }
@@ -169,7 +187,7 @@
         <div class="promo-grid">
             <div class="promo-box hover-card reveal">DP mulai 0%</div>
             <div class="promo-box hover-card reveal" style="transition-delay: 0.1s;">Booking mulai 500rb</div>
-            <div class="promo-box hover-card reveal" style="transition-delay: 0.2s;">Free AC & Mesin Cuci</div>
+            {{-- <div class="promo-box hover-card reveal" style="transition-delay: 0.2s;">Free AC & Mesin Cuci</div> --}}
         </div>
     </div>
 </section>

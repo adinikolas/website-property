@@ -8,6 +8,9 @@
     <!-- Title Dinamis (Diambil dari @section('title') di masing-masing halaman) -->
     <title>@yield('title', 'Beranda') - CKM City Karawang</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon_ckm_city.png') }}">
+
     <!-- FontAwesome CDN untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
