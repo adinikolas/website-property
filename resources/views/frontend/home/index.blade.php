@@ -94,8 +94,22 @@
 
     /* 5. Perumahan Unggulan (Dark Slate dengan Elemen Putih) */
     .perumahan-section { background: #111827; color: #fff; }
-    .perumahan-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-    .property-card { background: #1f2937; padding: 25px; border-radius: 16px; color: #fff; border: 1px solid #374151; }
+    .perumahan-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Mengatur item ganjil ke tengah */
+        gap: 40px;
+    }
+    .property-card {
+        /* Kalkulasi: 100% dibagi 2 kolom, dikurangi jarak gap 40px */
+        flex: 0 0 calc((100% - 40px) / 2);
+        box-sizing: border-box;
+        background: #1f2937;
+        padding: 25px;
+        border-radius: 16px;
+        color: #fff;
+        border: 1px solid #374151;
+    }
     .property-img { width: 100%; height: 260px; background: #374151; border-radius: 10px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .property-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .property-card:hover .property-img img { transform: scale(1.08); }
@@ -124,8 +138,21 @@
 
     /* 8. Testimoni Section */
     .testimoni-section { background: #f9fafb; }
-    .testimoni-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 35px; }
-    .testi-card { background: #ffffff; padding: 35px; border-radius: 16px; border: 1px solid #f3f4f6; }
+    .testimoni-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Mengatur item ganjil ke tengah */
+        gap: 35px;
+    }
+    .testi-card {
+        /* Kalkulasi: 100% dibagi 2 kolom, dikurangi jarak gap 35px */
+        flex: 0 0 calc((100% - 35px) / 2);
+        box-sizing: border-box;
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 16px;
+        border: 1px solid #f3f4f6;
+    }
     .testi-quote { font-size: 15px; font-style: italic; color: #4b5563; line-height: 1.7; margin: 0 0 25px 0; }
     .testi-user { display: flex; align-items: center; gap: 15px; }
     .testi-user img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
@@ -144,8 +171,8 @@
     @media(max-width: 768px) {
         section { padding: 60px 0; }
         .hero-section { padding: 100px 0 80px 0; }
-        .keunggulan-grid, .perumahan-grid, .keuntungan-grid, .testimoni-grid { grid-template-columns: 1fr; }
-        .promo-box { flex: 0 0 100%; }
+        .keunggulan-grid, .keuntungan-grid { grid-template-columns: 1fr; }
+        .promo-box, .property-card, .testi-card { flex: 0 0 100%; }
         .hero-title { font-size: 40px; }
         .hero-buttons { flex-direction: column; }
         .section-title { font-size: 26px; }
