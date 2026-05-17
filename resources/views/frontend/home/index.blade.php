@@ -4,8 +4,13 @@
 
 @section('content')
 <style>
-    /* Reset & Base Settings */
-    body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; background-color: #f9fafb; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif; /* <--- UBAH DI SINI */
+        overflow-x: hidden;
+        background-color: #f9fafb;
+    }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     /* Global Section Spacing */
