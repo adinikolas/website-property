@@ -22,7 +22,17 @@
     .hover-card:hover { transform: translateY(-5px); box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1); }
 
     /* 1. Hero Detail Section */
-    .hero-detail { background: linear-gradient(135deg, #3a8b45 0%, #24582a 100%); color: #fff; padding: 100px 0 60px 0; }
+    .hero-detail {
+        /* Menggunakan variabel --hero-bg */
+        background-image:
+            linear-gradient(90deg, rgba(36, 88, 42, 1) 0%, rgba(49, 116, 58, 0.9) 45%, rgba(49, 116, 58, 0) 100%),
+            var(--hero-bg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #fff;
+        padding: 100px 0 60px 0;
+    }
     .hero-flex { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; }
     .hero-left { max-width: 600px; }
     .hero-title { font-size: 46px; font-weight: 900; margin: 0 0 15px 0; line-height: 1.1; text-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -69,8 +79,20 @@
 
     /* Responsive Mobile */
     @media(max-width: 768px) {
-        .hero-flex { flex-direction: column; align-items: flex-start; gap: 20px; }
-        .hero-right { text-align: left; }
+        .hero-flex { flex-direction: column; gap: 20px; }
+        .hero-left { width: 100%; }
+        .hero-detail {
+            background-image:
+                linear-gradient(180deg, rgba(36, 88, 42, 0.95) 0%, rgba(49, 116, 58, 0.6) 100%),
+                var(--hero-bg);
+            padding: 80px 0 50px 0;
+        }
+
+        .hero-right {
+            width: 100%;
+            align-self: flex-end;
+            text-align: right !important;
+        }
         .info-grid { grid-template-columns: 1fr; }
         .price-grid { grid-template-columns: 1fr; }
         .hero-title { font-size: 36px; }
@@ -82,6 +104,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 @php
+    $hero_image = $property->image ? asset('storage/' . $property->image) : url('/images/hero-bg.jpg');
     $raw_wa = $settings['contact_whatsapp'] ?? '6281234567890';
     $wa_number = preg_replace('/[^0-9]/', '', $raw_wa);
     if(str_starts_with($wa_number, '0')) $wa_number = '62' . substr($wa_number, 1);
@@ -90,7 +113,7 @@
 @endphp
 
 <!-- 1. Hero Section -->
-<section class="hero-detail">
+<section class="hero-detail" style="--hero-bg: url('{{ $hero_image }}');">
     <div class="container reveal">
         <div class="hero-flex">
             <div class="hero-left">

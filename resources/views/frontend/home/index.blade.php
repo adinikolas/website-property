@@ -54,10 +54,21 @@
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
 
-    /* 1. Hero Section (Admin Green Gradient) */
-    .hero-section { background: linear-gradient(135deg, #3a8b45 0%, #24582a 100%); color: #fff; }
-    .hero-title { font-size: 52px; font-weight: 900; margin: 0 0 20px 0; line-height: 1.15; text-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .hero-desc { font-size: 18px; margin-bottom: 40px; max-width: 600px; line-height: 1.6; color: #e8f2e9; }
+    /* 1. Hero Section (Image + Gradient Overlay) */
+    .hero-section {
+        /* Ganti path gambar di bawah ini sesuai dengan lokasi gambar Anda */
+        background-image:
+            linear-gradient(90deg, rgba(36, 88, 42, 1) 0%, rgba(49, 116, 58, 0.9) 45%, rgba(49, 116, 58, 0) 100%),
+            url('/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center right;
+        background-repeat: no-repeat;
+        color: #fff;
+        position: relative;
+    }
+
+    .hero-title { font-size: 52px; font-weight: 900; margin: 0 0 20px 0; line-height: 1.15; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .hero-desc { font-size: 18px; margin-bottom: 40px; max-width: 600px; line-height: 1.6; color: #e8f2e9; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
     .hero-buttons { display: flex; gap: 15px; }
     .btn-primary { background: #111827; color: #fff; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     .btn-primary:hover { background: #1f2937; transform: translateY(-3px); }
@@ -175,7 +186,13 @@
     /* Mobile Responsive */
     @media(max-width: 768px) {
         section { padding: 60px 0; }
-        .hero-section { padding: 100px 0 80px 0; }
+        .hero-section {
+            padding: 100px 0 80px 0;
+            background-image:
+                linear-gradient(180deg, rgba(36, 88, 42, 0.95) 0%, rgba(49, 116, 58, 0.6) 100%),
+                url('/images/hero-bg.jpg');
+            background-position: center;
+        }
         .keunggulan-grid, .keuntungan-grid { grid-template-columns: 1fr; }
         .promo-box, .property-card, .testi-card { flex: 0 0 100%; }
         .hero-title { font-size: 40px; }
